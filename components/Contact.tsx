@@ -65,7 +65,7 @@ const Contact: React.FC = () => {
                                 </div>
                                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-2 font-mono">Teléfono</p>
                                 <p className="text-white font-medium text-lg group-hover:text-primary transition-colors">
-                                    +57 (302) 533-6266
+                                    +57 (323) 724-2744
                                 </p>
                             </a>
                         </div>
