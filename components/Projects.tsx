@@ -53,7 +53,7 @@ const projects: Project[] = [
     description: "FisiomFulness es una plataforma web integral de salud y bienestar diseñada principalmente para conectar a pacientes con fisioterapeutas.",
     images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770765724/Screenshot_2026-02-10_182123_jajg0z.png"],
     tags: ["Next.js", "Redux", "Node.js", "Bootstrap"],
-    url: "https://ejemplo.com/echo-audio",
+    url: "https://fisiom-front.vercel.app",
     className: "md:mt-12"
   }
 ];
