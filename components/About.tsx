@@ -10,7 +10,7 @@ const About: React.FC = () => {
   const CV_LINK = "https://drive.google.com/file/d/1NqecdFDdenb5A0-88IZYycKoTM12RVX7/view?usp=sharing";
 
   return (
-    <section id="about" className="col-span-1 lg:col-span-12 z-10 pt-20 scroll-mt-32">
+    <section id="about" className="col-span-1 lg:col-span-12 z-10 pt-5 scroll-mt-32 snap-start">
       <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/5 pb-6">
         <h2 className="font-serif text-4xl md:text-5xl text-white">Sobre mí</h2>
         <span className="text-slate-500 font-mono text-sm mt-2 md:mt-0">02 — PERFIL & STACK</span>

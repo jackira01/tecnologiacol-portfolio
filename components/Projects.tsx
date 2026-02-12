@@ -140,7 +140,7 @@ const ImageCarousel: React.FC<{ images: string[]; title: string }> = ({ images, 
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="col-span-1 lg:col-span-12 z-10 pt-32 scroll-mt-32">
+    <section id="projects" className="col-span-1 lg:col-span-12 z-10 pt-5 md:pt-20 scroll-mt-32 snap-start">
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-white/5 pb-6">
         <h2 className="font-serif text-4xl md:text-5xl text-white">Proyectos Destacados</h2>
         <span className="text-slate-500 font-mono text-sm mt-2 md:mt-0">01 — SELECCIÓN CINEMATOGRÁFICA</span>
@@ -160,18 +160,18 @@ const Projects: React.FC = () => {
               <ImageCarousel images={project.images} title={project.title} />
             </div>
 
-            <div className="mt-6 flex justify-between items-start">
-              <div>
+            <div className="mt-6 flex flex-col md:flex-row justify-between items-start gap-4">
+              <div className="w-full">
                 <h3 className="text-2xl text-white font-serif group-hover:text-primary transition-colors">{project.title}</h3>
-                <p className="text-slate-400 mt-2 text-sm leading-relaxed max-w-sm">{project.description}</p>
-                <div className="flex gap-3 mt-4 text-xs font-mono text-slate-500 uppercase tracking-wide">
+                <p className="text-slate-400 mt-2 text-sm leading-relaxed w-full md:max-w-sm">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mt-4 text-xs font-mono text-slate-500 uppercase tracking-wide">
                   {project.tags.map(tag => (
-                    <span key={tag} className="border border-white/10 px-2 py-1 rounded">{tag}</span>
+                    <span key={tag} className="border border-white/10 px-2 py-1 rounded whitespace-nowrap">{tag}</span>
                   ))}
                 </div>
               </div>
 
-              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0">
+              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 self-end md:self-start">
                 <ArrowUpRight size={18} />
               </div>
             </div>

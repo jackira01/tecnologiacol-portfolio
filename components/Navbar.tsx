@@ -4,24 +4,10 @@ import { Menu, X } from 'lucide-react';
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const element = document.querySelector(targetId);
-    if (element) {
-      const navbarHeight = 80; // Approximate navbar height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-    setIsOpen(false);
-  };
 
   return (
-    <nav className="fixed top-0 w-full z-[60] px-6 py-6 mix-blend-difference text-white">
+    <nav className="fixed top-0 left-0 right-0 z-[60] px-4 md:px-6 py-6 mix-blend-difference text-white">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <span className="font-serif text-xl font-bold tracking-tight">NB.</span>
 
@@ -41,9 +27,9 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Overlay */}
         {isOpen && (
           <div className="fixed inset-0 bg-surface-dark z-40 flex flex-col items-center justify-center space-y-8 md:hidden">
-            <a href="#projects" onClick={(e) => handleSmoothScroll(e, '#projects')} className="text-2xl font-serif hover:text-primary transition-colors">Proyectos</a>
-            <a href="#about" onClick={(e) => handleSmoothScroll(e, '#about')} className="text-2xl font-serif hover:text-primary transition-colors">Sobre mí</a>
-            <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')} className="text-2xl font-serif hover:text-primary transition-colors">Contacto</a>
+            <a href="#projects" onClick={() => setIsOpen(false)} className="text-2xl font-serif hover:text-primary transition-colors">Proyectos</a>
+            <a href="#about" onClick={() => setIsOpen(false)} className="text-2xl font-serif hover:text-primary transition-colors">Sobre mí</a>
+            <a href="#contact" onClick={() => setIsOpen(false)} className="text-2xl font-serif hover:text-primary transition-colors">Contacto</a>
           </div>
         )}
       </div>
