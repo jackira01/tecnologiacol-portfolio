@@ -171,7 +171,8 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 self-end md:self-start">
+              <div className="w-full md:w-auto mt-4 md:mt-0 px-5 py-3 md:px-4 md:py-2 rounded-full border border-white/10 flex items-center justify-center md:justify-start gap-2 group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 bg-white/5 md:bg-transparent">
+                <span className="text-sm font-medium">Visitar Proyecto</span>
                 <ArrowUpRight size={18} />
               </div>
             </div>
