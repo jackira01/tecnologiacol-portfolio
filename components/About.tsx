@@ -59,36 +59,62 @@ const About: React.FC = () => {
         </div>
 
         {/* Tech Stack */}
-        <div className="md:col-span-2 lg:col-span-2 row-span-1 bg-surface-card rounded-2xl p-6 flex flex-col justify-center hover:-translate-y-1 duration-300 border border-white/5">
-          <p className="text-xs font-mono text-slate-500 uppercase mb-4 tracking-wider">Tech Stack</p>
-          <div className="flex flex-wrap gap-3">
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVzrcSL08pV4t9ouo01zE16yem1kgGFyEPiA9b8NXLbwiDeqLGeP4wZ4vhHGO6mr9NIiBKOuoMmnWUNEBxNdh85gU9zp2Mnl1BHbOTsLHMBJkZm_SMyBnoZVxMeUmDiLl3DFKKKbq6aAyB9AXnBibz6wAIUbyBve7_YqyQAhBiwvTEYtNx_LalAnFYj215NTPDVSr-X_Q7W6ZexQ8KrecQjqWZXlOajDEVBZbDos59PHwvONfKGHk-mHHGyV_574q-G5slwkCerxA" alt="React" className="w-4 h-4" /> React
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Box size={14} /> Next.js
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Palette size={14} /> Tailwind
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Code size={14} /> TypeScript
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Database size={14} /> Node.js
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Database size={14} /> MongoDB
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Database size={14} /> MySQL
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Database size={14} /> Bootstrap
-            </span>
-            <span className="px-3 py-1.5 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <Database size={14} /> Git
-            </span>
+        <div className="md:col-span-2 lg:col-span-2 row-span-2 bg-surface-card rounded-2xl p-6 flex flex-col justify-start hover:-translate-y-1 duration-300 border border-white/5 overflow-y-auto">
+          {/* Frontend */}
+          <div className="mb-4">
+            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-primary/80">Frontend</h4>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">React</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Next.js</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Vite</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Tailwind</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Bootstrap</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">SEO</span>
+            </div>
+          </div>
+
+          {/* Backend & DB */}
+          <div className="mb-4">
+            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-cyan-400/80">Backend & DB</h4>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Node.js</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">PostgreSQL</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">MySQL</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">MongoDB</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">WordPress</span>
+            </div>
+          </div>
+
+          {/* Infraestructura */}
+          <div className="mb-4">
+            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-orange-400/80">Infraestructura</h4>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Linux</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">VPS</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Docker</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Pasarelas de pago</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Auth0</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">NextAuth</span>
+            </div>
+          </div>
+
+          {/* AI Productivity */}
+          <div className="mb-4">
+            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-violet-400/80">AI Productivity</h4>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">GitHub Copilot</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Cursor</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Prompts</span>
+            </div>
+          </div>
+
+          {/* CMS */}
+          <div>
+            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-violet-400/80">CMS</h4>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">WordPress</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">Shopify</span>
+            </div>
           </div>
         </div>
 
