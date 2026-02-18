@@ -7,7 +7,7 @@ const About: React.FC = () => {
   // Reemplaza el enlace de abajo con tu link público de Google Drive
   // Ejemplo: "https://drive.google.com/file/d/TU_ID_DE_ARCHIVO/view?usp=sharing"
   // ---------------------------------------------------------
-  const CV_LINK = "https://drive.google.com/file/d/1NqecdFDdenb5A0-88IZYycKoTM12RVX7/view?usp=sharing";
+  const CV_LINK = "https://drive.google.com/file/d/1FXvOc4glXxrGcvUx0kiia9cnBVm2qZbB/view?usp=sharing";
 
   return (
     <section id="about" className="col-span-1 lg:col-span-12 z-10 pt-5 scroll-mt-32 snap-start">
