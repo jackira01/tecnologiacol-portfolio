@@ -15,7 +15,7 @@ const projects: Project[] = [
   {
     id: 1,
     title: "PrepagoYa",
-    description: "Scort Web Site es una plataforma web moderna y segura diseñada para conectar proveedores de servicios de acompañantes premium con clientes potenciales.",
+    description: "Scort Web Site es creada a peticion de un cliente. Una plataforma web moderna y segura diseñada para conectar proveedores de servicios de acompañantes premium con clientes potenciales.",
     images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770763255/Gemini_Generated_Image_vhgxvvvhgxvvvhgx_znubwu.png"],
     tags: ["Next.js", "TailwindCss", "MongoDB", "NextAuth", "TypeScript"],
     url: "https://www.prepagoya.com",
@@ -45,7 +45,7 @@ const projects: Project[] = [
     images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770763049/Screenshot_2026-02-10_172757_cuu5qw.png"],
     tags: ["Next.js", "TailwindCss", "MongoDB", "Auth0", "TypeScript"],
     url: "https://taller-sag.vercel.app",
-    className: "md:mt-24"
+    className: ""
   },
   {
     id: 5,
