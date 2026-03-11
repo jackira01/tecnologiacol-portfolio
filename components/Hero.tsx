@@ -7,6 +7,13 @@ const Hero: React.FC = () => {
       <div className="w-full lg:w-7/12 flex flex-col justify-center h-full order-2 lg:order-1 mt-12 lg:mt-0 relative">
         <div className="absolute -left-6 top-0 h-full w-[1px] bg-white/10 hidden lg:block"></div>
         <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4 animate-fade-in-up">Full Stack Developer</p>
+        <div className="mb-8 mr-8 p-6 rounded-lg border border-primary/30 bg-primary/5 backdrop-blur-sm">
+          <p className="text-2xl md:text-3xl lg:text-4xl italic text-primary font-light leading-relaxed mb-0">
+            <span className="text-3xl md:text-4xl font-serif opacity-60 mr-2">"</span>
+            Si lo puedes imaginar, lo puedo crear
+            <span className="text-3xl md:text-4xl font-serif opacity-60 ml-2">"</span>
+          </p>
+        </div>
         <h1 className="font-serif text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.9] text-white mb-8 tracking-tighter">
           <span className="block hover:text-primary/90 transition-colors duration-500 cursor-default">Nicolás</span>
           <span className="block italic font-light ml-12 text-white/90">Beru</span>
