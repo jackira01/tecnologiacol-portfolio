@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Project {
@@ -147,13 +148,17 @@ const Projects: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-        {projects.map((project) => (
-          <a
+        {projects.map((project, index) => (
+          <motion.a
             key={project.id}
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
             className={`group project-card cursor-pointer md:col-span-1 md:row-span-1 block ${project.className || ''}`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: '-250px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <div className="aspect-video w-full overflow-hidden rounded-xl border border-white/5 bg-surface-card relative shadow-2xl shadow-black/20">
               <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500 pointer-events-none"></div>
@@ -176,7 +181,7 @@ const Projects: React.FC = () => {
                 <ArrowUpRight size={18} />
               </div>
             </div>
-          </a>
+          </motion.a>
         ))}
       </div>
     </section>
