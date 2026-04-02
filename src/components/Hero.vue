@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { ArrowUpRight } from 'lucide-vue-next'
+import { personal, assets, links, contact } from '@/data/portfolio'
 
 const TYPING_DELAY = 600 // ms
 const TYPING_SPEED = 55 // ms per char
-const QUOTE = 'Si lo puedes imaginar, lo puedo crear'
+const QUOTE = personal.quote
 
 const displayed = ref('')
 const started = ref(false)
@@ -90,8 +91,8 @@ onUnmounted(() => {
         :class="typingDone ? 'motion-scale-active' : 'motion-scale-initial'"
         :style="{ transitionDuration: '0.6s' }"
       >
-        <span class="block hover:text-primary/90 transition-colors duration-500 cursor-default">Nicolás</span>
-        <span class="block italic font-light ml-12 text-white/90">Beru</span>
+        <span class="block hover:text-primary/90 transition-colors duration-500 cursor-default">{{ personal.name.first }}</span>
+        <span class="block italic font-light ml-12 text-white/90">{{ personal.name.last }}</span>
       </h1>
 
       <!-- Description - staggered fade in from bottom -->
@@ -100,8 +101,8 @@ onUnmounted(() => {
         :class="typingDone ? 'motion-fade-up-active' : 'motion-fade-up-initial'"
         :style="{ transitionDelay: '0.3s', transitionDuration: '0.5s' }"
       >
-        Creo <span class="text-white">soluciones web a la medida</span> para tus necesidades. <br />
-        Desarrollo personalizado que convierte ideas en experiencias digitales únicas.
+        {{ personal.bio.tagline }} <br />
+        {{ personal.bio.taglineSub }}
       </p>
 
       <!-- Buttons - fade in after description -->
@@ -133,9 +134,9 @@ onUnmounted(() => {
       <!-- Image - mask reveal from bottom + blur dissipates -->
       <div class="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl shadow-black/50 group hero-image-reveal">
         <img
-          alt="Nicolás Beru Portrait"
+          :alt="personal.name.full + ' Portrait'"
           class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hero-image-blur"
-          src="https://res.cloudinary.com/dqojdssac/image/upload/v1770764435/Gemini_Generated_Image_tx6fpltx6fpltx6f_zbvliq.png"
+          :src="assets.portrait"
         />
 
         <!-- Location badge - appears after image reveal -->
@@ -144,7 +145,7 @@ onUnmounted(() => {
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
           </span>
-          <span class="text-xs font-semibold tracking-wide text-white uppercase">TOLIMA . COLOMBIA</span>
+          <span class="text-xs font-semibold tracking-wide text-white uppercase">{{ personal.location.badge }}</span>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Mail, Phone, ArrowUpRight, Sparkles } from 'lucide-vue-next'
+import { contact } from '@/data/portfolio'
 
 // IntersectionObserver refs for staggered animations
 const decorLineRef = ref<HTMLElement | null>(null)
@@ -125,7 +126,7 @@ onUnmounted(() => {
               :class="ctaVisible ? 'motion-active' : ''"
             >
               <a
-                href="mailto:tecnologiacol03@gmail.com"
+                :href="'mailto:' + contact.email"
                 class="group inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover-spring"
               >
                 Iniciar un Proyecto
@@ -139,7 +140,7 @@ onUnmounted(() => {
             <!-- Email Card -->
             <a
               ref="emailCardRef"
-              href="mailto:tecnologiacol03@gmail.com"
+              :href="'mailto:' + contact.email"
               class="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 rounded-2xl p-6 transition-all duration-300 motion-slide-right contact-hover"
               :class="emailCardVisible ? 'motion-active' : ''"
             >
@@ -151,14 +152,14 @@ onUnmounted(() => {
               </div>
               <p class="text-xs text-slate-500 uppercase tracking-wider mb-2 font-mono">Email</p>
               <p class="text-white font-medium text-lg group-hover:text-primary transition-colors">
-                tecnologiacol03@gmail.com
+                {{ contact.email }}
               </p>
             </a>
 
             <!-- Phone Card -->
             <a
               ref="phoneCardRef"
-              href="tel:+573025336266"
+              :href="'tel:' + contact.phone.raw"
               class="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 rounded-2xl p-6 transition-all duration-300 motion-slide-right contact-hover"
               :class="phoneCardVisible ? 'motion-active' : ''"
             >
@@ -170,7 +171,7 @@ onUnmounted(() => {
               </div>
               <p class="text-xs text-slate-500 uppercase tracking-wider mb-2 font-mono">Teléfono</p>
               <p class="text-white font-medium text-lg group-hover:text-primary transition-colors">
-                +57 (323) 724-2744
+                {{ contact.phone.display }}
               </p>
             </a>
 
@@ -180,7 +181,7 @@ onUnmounted(() => {
               :class="responseVisible ? 'motion-active' : ''"
             >
               <span class="text-slate-500 text-sm block">
-                Respuesta en <span class="text-white font-medium">24 horas</span>
+                Respuesta en <span class="text-white font-medium">{{ contact.responseTime }}</span>
               </span>
             </div>
           </div>

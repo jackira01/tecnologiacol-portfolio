@@ -1,69 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-vue-next'
-
-interface Project {
-  id: number
-  title: string
-  description: string
-  images: string[]
-  tags: string[]
-  url: string
-  video?: string
-  className?: string
-}
-
-const projects: Project[] = [
-  {
-    id: 0,
-    title: "AriseXR",
-    description: "AriseXR es una single page application moderna y visualmente atractiva, diseñada para mostrar los servicios de coaching de manera elegante, con animaciones fluidas y una interfaz inmersiva.",
-    images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1774979186/arise-page_qxto7w.png"],
-    video: "https://res.cloudinary.com/dqojdssac/video/upload/v1774977201/2026-03-31_12-08-39_xvmuub.mp4",
-    tags: ["Vue.js", "TailwindCss", "Motion", "Single Page"],
-    url: "#"
-  },
-  {
-    id: 1,
-    title: "PrepagoYa",
-    description: "Scort Web Site es creada a peticion de un cliente. Una plataforma web moderna y segura diseñada para conectar proveedores de servicios de acompañantes premium con clientes potenciales.",
-    images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770763255/Gemini_Generated_Image_vhgxvvvhgxvvvhgx_znubwu.png"],
-    tags: ["Next.js", "TailwindCss", "MongoDB", "NextAuth", "TypeScript"],
-    url: "https://www.prepagoya.com",
-  },
-  {
-    id: 2,
-    title: "coopinem",
-    description: "Coopinem es una cooperativa sin ánimo de lucro en el Tolima, dedicada al bienestar de docentes activos (nómina municipal y departamental) y pensionados del magisterio (Fopep y Fiduprevisora).",
-    images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770767449/Screenshot_2026-02-10_185013_vwlzcu.png"],
-    tags: ["Wordpress", "Elementor", "WooCommerce"],
-    url: "https://coopinem.com.co/",
-  },
-  {
-    id: 3,
-    title: "Catalogo de Portatiles",
-    description: "Esta es una web desarrollada con el objetivo de ofrecer una variedad de productos a los usuarios para que puedan ver sus detalles, comentarios, poder comprarlos, ver su historial de vistas, entre otras funciones.",
-    images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770762420/Screenshot_2026-02-10_172644_uqlxbu.png"],
-    tags: ["Next.js", "TailwindCss", "MongoDB", "NextAuth", "TypeScript"],
-    url: "https://catalogo.tecnologiacol.lat",
-  },
-  {
-    id: 4,
-    title: "Taller Sag",
-    description: "Desarrollé con mi grupo de trabajo una aplicación web para una empresa conocida en su sector con el objetivo de que los clientes tengan la posibilidad de contactar e interactuar con la empresa desde la comodidad de sus casas.",
-    images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770763049/Screenshot_2026-02-10_172757_cuu5qw.png"],
-    tags: ["Next.js", "TailwindCss", "MongoDB", "Auth0", "TypeScript"],
-    url: "https://taller-sag.vercel.app",
-  },
-  {
-    id: 5,
-    title: "FisiomFulness",
-    description: "FisiomFulness es una plataforma web integral de salud y bienestar diseñada principalmente para conectar a pacientes con fisioterapeutas.",
-    images: ["https://res.cloudinary.com/dqojdssac/image/upload/v1770765724/Screenshot_2026-02-10_182123_jajg0z.png"],
-    tags: ["Next.js", "Redux", "Node.js", "Bootstrap"],
-    url: "https://fisiom-front.vercel.app",
-  }
-]
+import { ArrowUpRight, ChevronLeft, ChevronRight, Play } from 'lucide-vue-next'
+import { projects } from '@/data/portfolio'
+import type { Project } from '@/data/portfolio'
 
 const carouselIndexes = ref<Record<number, number>>(
   Object.fromEntries(projects.map(p => [p.id, 0]))
@@ -146,11 +85,12 @@ onUnmounted(() => {
         v-for="(project, index) in projects"
         :key="project.id"
         :ref="(el) => setCardRef(el, index)"
-        :href="project.url"
-        target="_blank"
-        rel="noopener noreferrer"
+        :href="project.active ? project.url : undefined"
+        :target="project.active ? '_blank' : undefined"
+        :rel="project.active ? 'noopener noreferrer' : undefined"
         :class="[
-          'group project-card cursor-pointer md:col-span-1 md:row-span-1 block project-motion',
+          'group project-card md:col-span-1 md:row-span-1 block project-motion',
+          project.active ? 'cursor-pointer' : 'cursor-default',
           cardVisible[index] ? 'project-visible' : (index % 2 === 0 ? 'project-hidden-left' : 'project-hidden-right')
         ]"
         @mouseenter="onProjectMouseEnter(project)"
@@ -169,6 +109,16 @@ onUnmounted(() => {
                 !project.video ? 'group-hover:scale-105' : ''
               ]"
             />
+
+            <!-- Play icon (solo proyectos con video) -->
+            <div
+              v-if="project.video"
+              class="absolute inset-0 flex items-center justify-center z-[6] opacity-100 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"
+            >
+              <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                <Play :size="24" class="text-white fill-white ml-1" />
+              </div>
+            </div>
 
             <!-- Video overlay (solo proyectos con video) -->
             <video
@@ -224,7 +174,10 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div class="w-full md:w-auto mt-4 md:mt-0 px-5 py-3 md:px-4 md:py-2 rounded-full border border-white/10 flex items-center justify-center md:justify-start gap-2 group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 bg-white/5 md:bg-transparent">
+          <div
+            v-if="project.active"
+            class="w-full md:w-auto mt-4 md:mt-0 px-5 py-3 md:px-4 md:py-2 rounded-full border border-white/10 flex items-center justify-center md:justify-start gap-2 group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 bg-white/5 md:bg-transparent"
+          >
             <span class="text-sm font-medium">Visitar Proyecto</span>
             <ArrowUpRight :size="18" />
           </div>

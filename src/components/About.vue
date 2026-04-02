@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Fingerprint, Globe, Download, MapPin } from 'lucide-vue-next'
-
-const CV_LINK = "https://drive.google.com/file/d/1FXvOc4glXxrGcvUx0kiia9cnBVm2qZbB/view?usp=sharing"
+import { personal, links, assets, techStack } from '@/data/portfolio'
 
 // IntersectionObserver for staggered card reveals (once: true, margin: -60px)
 const sectionRef = ref<HTMLElement | null>(null)
@@ -90,9 +89,9 @@ onUnmounted(() => {
           <Fingerprint class="text-white/70 group-hover:text-primary" :size="24" />
         </div>
         <div>
-          <h3 class="text-2xl text-white font-medium mb-4">Desarrollador enfocado en soluciones a la medida</h3>
+          <h3 class="text-2xl text-white font-medium mb-4">{{ personal.bio.heading }}</h3>
           <p class="text-slate-400 leading-relaxed text-sm md:text-base">
-            Me especializo en crear soluciones digitales personalizadas que se adaptan a tus objetivos únicos. Mi prioridad es entender a fondo las necesidades de cada cliente para entregar herramientas web eficientes, escalables y hechas a la medida.
+            {{ personal.bio.description }}
           </p>
         </div>
       </div>
@@ -108,8 +107,8 @@ onUnmounted(() => {
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
           <span class="relative inline-flex rounded-full h-4 w-4 bg-primary"></span>
         </span>
-        <h4 class="text-white font-medium relative z-10">Disponible</h4>
-        <p class="text-xs text-slate-400 mt-1 relative z-10">Para nuevos proyectos</p>
+        <h4 class="text-white font-medium relative z-10">{{ personal.availability.label }}</h4>
+        <p class="text-xs text-slate-400 mt-1 relative z-10">{{ personal.availability.sublabel }}</p>
       </div>
 
       <!-- Language Level -->
@@ -123,8 +122,8 @@ onUnmounted(() => {
           <Globe :size="40" class="text-black" />
         </div>
         <div class="flex items-baseline gap-1">
-          <span class="text-5xl font-serif font-bold text-black tracking-tighter">B1</span>
-          <span class="text-sm font-bold text-black/60">/ EF SET</span>
+          <span class="text-5xl font-serif font-bold text-black tracking-tighter">{{ personal.english.level }}</span>
+          <span class="text-sm font-bold text-black/60">/ {{ personal.english.scale }}</span>
         </div>
         <div>
           <p class="text-black font-bold text-sm">Nivel Inglés</p>
@@ -143,39 +142,11 @@ onUnmounted(() => {
         class="md:col-span-2 lg:col-span-2 row-span-2 bg-surface-card rounded-2xl p-6 flex flex-col justify-start hover:-translate-y-1 duration-300 border border-white/5 overflow-y-auto motion-card"
         :class="cardVisible[3] ? 'motion-active' : ''"
       >
-        <!-- Frontend -->
-        <div class="mb-4">
-          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-primary/80">Frontend</h4>
+        <!-- Tech Stack -->
+        <div class="mb-4" v-for="category in techStack" :key="category.label">
+          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5" :class="category.color">{{ category.label }}</h4>
           <div class="flex flex-wrap gap-2">
-            <span v-for="t in ['React', 'Next.js', 'Vue', 'Vite', 'Tailwind', 'Bootstrap', 'SEO']" :key="t" class="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">{{ t }}</span>
-          </div>
-        </div>
-        <!-- Backend & DB -->
-        <div class="mb-4">
-          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-cyan-400/80">Backend & DB</h4>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="t in ['Node.js', 'PostgreSQL', 'MySQL', 'MongoDB', 'WordPress']" :key="t" class="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">{{ t }}</span>
-          </div>
-        </div>
-        <!-- Infraestructura -->
-        <div class="mb-4">
-          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-orange-400/80">Infraestructura</h4>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="t in ['Linux', 'VPS', 'Docker', 'Pasarelas de pago', 'Auth0', 'NextAuth']" :key="t" class="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">{{ t }}</span>
-          </div>
-        </div>
-        <!-- AI Productivity -->
-        <div class="mb-4">
-          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-violet-400/80">AI Productivity</h4>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="t in ['GitHub Copilot', 'Cursor', 'Prompts']" :key="t" class="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">{{ t }}</span>
-          </div>
-        </div>
-        <!-- CMS -->
-        <div>
-          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 text-violet-400/80">CMS</h4>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="t in ['WordPress', 'Shopify']" :key="t" class="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">{{ t }}</span>
+            <span v-for="t in category.items" :key="t" class="px-2.5 py-1 rounded-md bg-white/5 text-slate-300 text-xs font-medium border border-white/5 hover:bg-white/10 transition-colors">{{ t }}</span>
           </div>
         </div>
       </div>
@@ -187,7 +158,7 @@ onUnmounted(() => {
         :class="cardVisible[4] ? 'motion-active' : ''"
       >
         <a
-          :href="CV_LINK"
+          :href="links.cv"
           target="_blank"
           rel="noopener noreferrer"
           class="absolute inset-0 z-10 flex flex-col items-center justify-center"
@@ -204,7 +175,7 @@ onUnmounted(() => {
         :class="cardVisible[5] ? 'motion-active' : ''"
       >
         <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl3j1Nu2BQfTqyb9ECCQivX-D45MqC0n5HzBLVRSVNgGf0OsEvbSocXeqz04hMx3g6bjT47OHWn_qxsnaLrTSuNTC3yj-5tkMPY-hJJDE_aiK8owEgbxk6qGNB7reLJpAZ24JbzBUQU5nujV-ExcO4DXIYZtgt0Ib_ymq39d1DNWMSEjSzMrdFCa4_Dum4bxgOAadOXZKHeKxsrN5f6FXG6VRsQk7jy0va1OVCknjuMQ19oi7uCtodPqbZUF-unnQM_8N4JaMVY38"
+          :src="assets.mapColombia"
           alt="Colombia Map"
           class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
         />
