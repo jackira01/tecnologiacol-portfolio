@@ -60,7 +60,7 @@ export const contact = {
 //  LINKS EXTERNOS
 // ------------------------------------------------------------
 export const links = {
-    cv: 'https://drive.google.com/file/d/1FXvOc4glXxrGcvUx0kiia9cnBVm2qZbB/view?usp=sharing',
+    cv: 'https://drive.google.com/file/d/1C0_u3CkIhD2mRd8uFl-rlRGomecEF8Gy/view?usp=sharing',
     linkedin: 'https://www.linkedin.com/in/jhoan-nicolas-beru-alvarez-a30a61210',
     github: 'https://github.com/jackira01',
 }
@@ -170,9 +170,11 @@ export const projects: Project[] = [
         images: [
             'https://res.cloudinary.com/dqojdssac/image/upload/v1770767449/Screenshot_2026-02-10_185013_vwlzcu.png',
         ],
+        video:
+            'https://res.cloudinary.com/dqojdssac/video/upload/v1775196472/2026-04-03_01-06-50_lxth3u.mp4',
         tags: ['Wordpress', 'Elementor', 'WooCommerce'],
         url: 'https://coopinem.com.co/',
-        active: false,
+        active: true,
     },
     {
         id: 3,

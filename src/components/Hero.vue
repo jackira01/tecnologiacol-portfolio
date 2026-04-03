@@ -74,7 +74,7 @@ onUnmounted(() => {
         :class="showQuoteBox ? 'motion-fade-active' : 'motion-fade-initial'"
         :style="{ transitionDuration: '0.3s' }"
       >
-        <p class="text-2xl md:text-3xl lg:text-4xl italic text-primary font-light leading-relaxed mb-0 whitespace-nowrap">
+        <p class="text-2xl md:text-3xl lg:text-4xl italic text-primary font-light leading-relaxed mb-0 md:whitespace-nowrap">
           <span class="text-3xl md:text-4xl font-serif opacity-60 mr-2">"</span>
           {{ displayed }}
           <span v-if="cursorVisible && started" class="animate-blink ml-0.5">|</span>

@@ -50,13 +50,22 @@ const cardRefs = ref<(HTMLElement | null)[]>([])
 const cardVisible = ref<boolean[]>(projects.map(() => false))
 let observers: IntersectionObserver[] = []
 
+// Mobile video autoplay by viewport
+const isMobile = ref(false)
+const mobilePlayingVideos = ref<number[]>([])
+let videoObservers: IntersectionObserver[] = []
+
 function setCardRef(el: any, index: number) {
   cardRefs.value[index] = el as HTMLElement | null
 }
 
 onMounted(() => {
+  isMobile.value = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+
   cardRefs.value.forEach((el, index) => {
     if (!el) return
+
+    // Observer for entrance animation
     const obs = new IntersectionObserver(
       ([entry]) => {
         cardVisible.value[index] = entry.isIntersecting
@@ -65,11 +74,41 @@ onMounted(() => {
     )
     obs.observe(el)
     observers.push(obs)
+
+    // Observer for mobile video autoplay
+    if (isMobile.value) {
+      const project = projects[index]
+      if (!project.video) return
+      const videoObs = new IntersectionObserver(
+        ([entry]) => {
+          const video = videoRefs.value[project.id]
+          if (entry.isIntersecting) {
+            if (!mobilePlayingVideos.value.includes(project.id)) {
+              mobilePlayingVideos.value = [...mobilePlayingVideos.value, project.id]
+            }
+            if (video) {
+              video.currentTime = 0
+              video.play().catch(() => {})
+            }
+          } else {
+            mobilePlayingVideos.value = mobilePlayingVideos.value.filter(id => id !== project.id)
+            if (video) {
+              video.pause()
+              video.currentTime = 0
+            }
+          }
+        },
+        { rootMargin: '-80px', threshold: 0.4 }
+      )
+      videoObs.observe(el)
+      videoObservers.push(videoObs)
+    }
   })
 })
 
 onUnmounted(() => {
   observers.forEach(obs => obs.disconnect())
+  videoObservers.forEach(obs => obs.disconnect())
 })
 </script>
 
@@ -112,7 +151,7 @@ onUnmounted(() => {
 
             <!-- Play icon (solo proyectos con video) -->
             <div
-              v-if="project.video"
+              v-if="project.video && !mobilePlayingVideos.includes(project.id)"
               class="absolute inset-0 flex items-center justify-center z-[6] opacity-100 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"
             >
               <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20">
@@ -129,7 +168,10 @@ onUnmounted(() => {
               muted
               playsinline
               preload="metadata"
-              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[5]"
+              :class="[
+                'absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-[5]',
+                mobilePlayingVideos.includes(project.id) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              ]"
             />
 
             <template v-if="project.images.length > 1">
