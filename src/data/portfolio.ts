@@ -140,7 +140,7 @@ export const projects: Project[] = [
         description:
             'AriseXR es una single page application moderna y visualmente atractiva, diseñada para mostrar los servicios de coaching de manera elegante, con animaciones fluidas y una interfaz inmersiva.',
         images: [
-            'https://res.cloudinary.com/dqojdssac/image/upload/v1774979186/arise-page_qxto7w.png',
+            'https://res.cloudinary.com/dqojdssac/image/upload/v1775196240/arise-page_honmxj.png',
         ],
         video:
             'https://res.cloudinary.com/dqojdssac/video/upload/v1775148727/2026-04-02_11-41-03_z81ecd.mp4',
