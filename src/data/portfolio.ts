@@ -145,7 +145,7 @@ export const projects: Project[] = [
         video:
             'https://res.cloudinary.com/dqojdssac/video/upload/v1775148727/2026-04-02_11-41-03_z81ecd.mp4',
         tags: ['Vue.js', 'TailwindCss', 'Motion', 'Single Page', 'N8N'],
-        url: 'https://arisexr.vercel.app/',
+        url: 'https://www.arisexr.lol',
         active: true,
     },
     {
