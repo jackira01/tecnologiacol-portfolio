@@ -60,7 +60,7 @@ export const contact = {
 //  LINKS EXTERNOS
 // ------------------------------------------------------------
 export const links = {
-    cv: 'https://drive.google.com/file/d/1C0_u3CkIhD2mRd8uFl-rlRGomecEF8Gy/view?usp=sharing',
+    cv: 'https://drive.google.com/file/d/17okbHXgLpgxzxfxO7s08RCjd-9eSDPtC/view?usp=sharing',
     linkedin: 'https://www.linkedin.com/in/jhoan-nicolas-beru-alvarez-a30a61210',
     github: 'https://github.com/jackira01',
 }
